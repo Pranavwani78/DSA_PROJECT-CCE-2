@@ -1,0 +1,77 @@
+===== MUSIC PLAYLIST =====
+1. Add Song
+2. Display Playlist
+3. Play Playlist (Repeat Mode)
+4. Exit
+Enter your choice: 1
+Enter song name: Believer
+Song added: Believer
+
+===== MUSIC PLAYLIST =====
+1. Add Song
+2. Display Playlist
+3. Play Playlist (Repeat Mode)
+4. Exit
+Enter your choice: 1
+Enter song name: Shape of You
+Song added: Shape of You
+
+===== MUSIC PLAYLIST =====
+1. Add Song
+2. Display Playlist
+3. Play Playlist (Repeat Mode)
+4. Exit
+Enter your choice: 1
+Enter song name: Faded
+Song added: Faded
+
+===== MUSIC PLAYLIST =====
+1. Add Song
+2. Display Playlist
+3. Play Playlist (Repeat Mode)
+4. Exit
+Enter your choice: 1
+Enter song name: Perfect
+Song added: Perfect
+
+===== MUSIC PLAYLIST =====
+1. Add Song
+2. Display Playlist
+3. Play Playlist (Repeat Mode)
+4. Exit
+Enter your choice: 2
+
+--- Music Playlist ---
+1. Believer
+2. Shape of You
+3. Faded
+4. Perfect
+
+===== MUSIC PLAYLIST =====
+1. Add Song
+2. Display Playlist
+3. Play Playlist (Repeat Mode)
+4. Exit
+Enter your choice: 3
+
+Repeat mode enabled.
+Now Playing: Believer
+Play next song? (y/n): y
+Now Playing: Shape of You
+Play next song? (y/n): y
+Now Playing: Faded
+Play next song? (y/n): y
+Now Playing: Perfect
+Reached the end. Restarting playlist.
+Play next song? (y/n): y
+Now Playing: Believer
+Play next song? (y/n): n
+Playlist stopped.
+
+===== MUSIC PLAYLIST =====
+1. Add Song
+2. Display Playlist
+3. Play Playlist (Repeat Mode)
+4. Exit
+Enter your choice: 4
+Thank you for using Music Playlist!
