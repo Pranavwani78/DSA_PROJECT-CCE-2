@@ -1,0 +1,253 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+struct Node
+{
+    int pin;
+    Node *left, *right;
+    bool lthread, rthread;
+};
+
+Node* root = nullptr;
+
+Node* createNode(int pin)
+{
+    Node* temp = new Node;
+    temp->pin = pin;
+    temp->left = temp->right = nullptr;
+    temp->lthread = temp->rthread = false;
+    return temp;
+}
+
+void insertPIN(int pin)
+{
+    Node* temp = createNode(pin);
+
+    if (root == nullptr)
+    {
+        root = temp;
+        return;
+    }
+
+    Node* current = root;
+    Node* parent = nullptr;
+
+    while (current != nullptr)
+    {
+        parent = current;
+
+        if (pin < current->pin)
+        {
+            if (current->lthread)
+                break;
+
+            current = current->left;
+        }
+        else if (pin > current->pin)
+        {
+            if (current->rthread)
+                break;
+
+            current = current->right;
+        }
+        else
+        {
+            delete temp;
+            cout << "PIN already exists!\n";
+            return;
+        }
+    }
+
+    if (pin < parent->pin)
+    {
+        temp->left = parent->left;
+        temp->right = parent;
+        temp->lthread = true;
+        temp->rthread = true;
+
+        parent->left = temp;
+        parent->lthread = false;
+    }
+    else
+    {
+        temp->right = parent->right;
+        temp->left = parent;
+        temp->lthread = true;
+        temp->rthread = true;
+
+        parent->right = temp;
+        parent->rthread = false;
+    }
+}
+
+void stackInorder()
+{
+    stack<Node*> s;
+    Node* current = root;
+
+    while (current != nullptr || !s.empty())
+    {
+        while (current != nullptr)
+        {
+            s.push(current);
+
+            if (current->lthread)
+                current = nullptr;
+            else
+                current = current->left;
+        }
+
+        if (s.empty())
+            break;
+
+        current = s.top();
+        s.pop();
+
+        cout << current->pin << " ";
+
+        if (current->rthread)
+            current = nullptr;
+        else
+            current = current->right;
+    }
+}
+
+void convert(Node* current, Node*& previous)
+{
+    if (current == nullptr)
+        return;
+
+    if (!current->lthread)
+        convert(current->left, previous);
+
+    if (current->left == nullptr)
+    {
+        current->left = previous;
+        current->lthread = true;
+    }
+
+    if (previous != nullptr && previous->right == nullptr)
+    {
+        previous->right = current;
+        previous->rthread = true;
+    }
+
+    previous = current;
+
+    if (!current->rthread)
+        convert(current->right, previous);
+}
+
+void threadedInorder()
+{
+    Node* current = root;
+
+    if (current == nullptr)
+    {
+        cout << "Directory is empty!";
+        return;
+    }
+
+    while (!current->lthread && current->left != nullptr)
+        current = current->left;
+
+    while (current != nullptr)
+    {
+        cout << current->pin << " ";
+
+        if (current->rthread)
+            current = current->right;
+        else
+        {
+            current = current->right;
+
+            while (current != nullptr &&
+                   !current->lthread)
+                current = current->left;
+        }
+    }
+}
+
+int main()
+{
+    int choice, pin;
+    bool converted = false;
+
+    do
+    {
+        cout << "\n\n--- PIN CODE DIRECTORY ---";
+        cout << "\n1. Insert PIN";
+        cout << "\n2. Stack-Based Inorder";
+        cout << "\n3. Convert to Threaded BST";
+        cout << "\n4. Threaded Inorder";
+        cout << "\n5. Exit";
+        cout << "\nEnter choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+            case 1:
+                if (converted)
+                {
+                    cout << "Insertion disabled after conversion.\n";
+                    break;
+                }
+
+                cout << "Enter PIN: ";
+                cin >> pin;
+                insertPIN(pin);
+                break;
+
+            case 2:
+                if (!converted)
+                {
+                    cout << "PIN codes in sorted order:\n";
+                    stackInorder();
+                    cout << endl;
+                }
+                else
+                {
+                    cout << "Stack traversal disabled after conversion.\n";
+                }
+                break;
+
+            case 3:
+                if (!converted)
+                {
+                    Node* previous = nullptr;
+                    convert(root, previous);
+                    converted = true;
+                    cout << "Tree converted successfully!\n";
+                }
+                else
+                {
+                    cout << "Already converted!\n";
+                }
+                break;
+
+            case 4:
+                if (converted)
+                {
+                    cout << "Threaded inorder traversal:\n";
+                    threadedInorder();
+                    cout << endl;
+                }
+                else
+                {
+                    cout << "Convert the tree first!\n";
+                }
+                break;
+
+            case 5:
+                cout << "Thank you!\n";
+                break;
+
+            default:
+                cout << "Invalid choice!\n";
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}

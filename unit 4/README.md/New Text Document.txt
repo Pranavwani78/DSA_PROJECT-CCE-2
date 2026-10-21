@@ -1,0 +1,87 @@
+PIN Code Directory Using Threaded Binary Search Tree
+
+1. Problem Statement
+
+Develop a C++ application to manage PIN codes using a Binary Search Tree (BST). Convert the normal BST into a Threaded BST and display PIN codes using stack-based and threaded inorder traversal.
+
+2. Objectives
+
+- To create a PIN Code Directory using C++.
+- To insert PIN codes into a Binary Search Tree.
+- To convert a normal BST into a Threaded BST.
+- To display PIN codes using stack-based inorder traversal.
+- To display PIN codes using threaded inorder traversal.
+- To understand BST, pointers, threads, and traversal.
+
+3. Introduction
+
+A PIN Code Directory stores PIN codes in an organized way. In this project, we use a Binary Search Tree to store PIN codes.
+
+First, PIN codes are inserted into a normal BST. Then, the BST is converted into a Threaded BST by using empty child pointers as threads. The program displays PIN codes in ascending order using two methods: stack-based inorder traversal and threaded inorder traversal.
+
+4. Features
+
+- Insert PIN codes into the BST.
+- Avoid inserting duplicate PIN codes.
+- Display PIN codes using stack-based inorder traversal.
+- Convert a normal BST into a Threaded BST.
+- Display PIN codes using threaded inorder traversal.
+- Simple menu-driven interface.
+
+5. Data Structures Used
+
+- Binary Search Tree (BST): Stores PIN codes in sorted tree structure.
+- Stack: Helps perform inorder traversal without recursion.
+- Threaded BST: Uses threads to move between nodes during inorder traversal.
+- Pointers: Connect the nodes of the tree.
+
+6. Algorithm
+
+1. Start the program.
+2. Create an empty BST.
+3. Insert PIN codes into the BST.
+4. Display the menu.
+5. Perform stack-based inorder traversal when selected.
+6. Convert the normal BST into a Threaded BST.
+7. Perform threaded inorder traversal when selected.
+8. Repeat until the user selects Exit.
+9. Stop the program.
+
+7. Technologies Used
+
+- Programming Language: C++
+- Concepts: BST, Threaded BST, Stack, Pointers, Inorder Traversal
+- Platform: Visual Studio Code or any C++ compiler
+
+8. How to Run
+
+1. Copy the C++ source code into a file named "main.cpp".
+2. Compile the program using a C++ compiler.
+3. Run the generated executable.
+4. Insert PIN codes using the menu.
+5. Select the traversal options to display the PIN codes.
+
+9. Expected Output
+
+The program displays PIN codes in ascending order using both stack-based and threaded inorder traversal.
+
+Example:
+
+PIN codes: 411001 422001 422003
+
+10. Advantages
+
+- Stores PIN codes in an organized way.
+- Demonstrates two inorder traversal methods.
+- Threaded traversal does not require an additional stack.
+- Helps understand tree data structures.
+
+11. Limitations
+
+- PIN codes are stored only while the program is running.
+- PIN insertion is disabled after conversion to a Threaded BST.
+- The current program does not provide search, update, or delete options.
+
+12. Conclusion
+
+This project demonstrates how a normal Binary Search Tree can be converted into a Threaded Binary Search Tree. It helps us understand PIN code insertion, stack-based traversal, and threaded inorder traversal using C++.
